@@ -1,0 +1,44 @@
+from random import randint
+
+player_wins = 0
+comp_wins = 0
+target = randint(3,7)
+print(f"First to {target} wins! LET THE GAMES BEGIN!")
+while player_wins != target and comp_wins != target:
+    comp = randint(0, 2)
+    if comp == 0:
+        comp = 'rock'
+    elif comp == 1:
+        comp = 'paper'
+    else:
+        comp = 'scissors'
+    actions = ['rock', 'paper', 'scissors']
+    player = input("Choose among rock, paper, and scissors: ").lower()
+    while player not in actions:
+        print("You idiot sandwich!!! Try again!")
+        player = input("Choose among rock, paper, and scissors: ").lower()
+    for word in actions:
+        print(f"...{word}...")
+
+    if player == comp:
+        print("Try again! :/")
+    elif comp == 'rock' and player == 'scissors':
+        print(f"You suck! Computer chose {comp}. :P")
+        print(f"YOU: {player_wins} COMP: {comp_wins + 1}")
+        comp_wins += 1
+    elif comp == 'paper' and player == 'rock':
+        print(f"You suck! Computer chose {comp}. :P")
+        print(f"YOU: {player_wins} COMP: {comp_wins + 1}")
+        comp_wins += 1
+    elif comp == 'scissors' and player == 'paper':
+        print(f"You suck! Computer chose {comp}. :P")
+        print(f"YOU: {player_wins} COMP: {comp_wins + 1}")
+        comp_wins += 1
+    else:
+        print("You rock! :D")
+        print(f"YOU: {player_wins + 1} COMP: {comp_wins}")
+        player_wins += 1
+if player_wins > comp_wins:
+    print(f"GGWP!\nYOU {player_wins} - {comp_wins} COMP")
+else:
+    print(f"Oof!!\nCOMP {comp_wins} - {player_wins} YOU")
